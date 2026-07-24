@@ -1,0 +1,116 @@
+---
+import '../styles/global.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body>
+    <script is:inline>
+      (function () {
+        const t = localStorage.getItem('theme');
+        const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (t === 'dark' || (!t && prefers)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="site-title">🌸 Zoe's Blog</a>
+        <nav class="site-nav">
+          <a href="/">首页</a>
+          <a href="/about">博客</a>
+          <ThemeToggle />
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; {new Date().getFullYear()} My Blog &middot; Made with 💖</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  .site-header {
+    padding: 2rem 1.5rem 0;
+  }
+
+  .header-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .site-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent), var(--text-link));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+  }
+
+  .site-title:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .site-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+
+  .site-nav a:hover {
+    color: var(--text-link);
+    background: var(--accent-soft);
+    text-decoration: none;
+  }
+
+  .main-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .site-footer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+</style>

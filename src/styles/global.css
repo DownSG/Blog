@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Pink girly light theme */
+  --bg: #fff0f5;
+  --bg-card: #fff5f8;
+  --bg-code: #fff0f3;
+  --text: #5c3d4e;
+  --text-muted: #b08a9c;
+  --text-link: #e8789a;
+  --border: #f5d5e0;
+  --accent: #f0a0c0;
+  --accent-soft: #fce4ec;
+  --shadow: 0 2px 8px rgba(220, 140, 160, 0.10);
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+  --radius: 12px;
+}
+
+:root.dark {
+  --bg: #2a1a23;
+  --bg-card: #33222b;
+  --bg-code: #3d2a32;
+  --text: #ecd5df;
+  --text-muted: #b895a6;
+  --text-link: #f5a0b8;
+  --border: #4a3340;
+  --accent: #e898b0;
+  --accent-soft: #3d2a35;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text);
+  background: var(--bg);
+  transition: background 0.3s, color 0.3s;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Article content styles */
+.prose {
+  max-width: 700px;
+  font-size: 1.05rem;
+}
+
+.prose h1 {
+  font-size: 2rem;
+  margin: 2.5rem 0 0.8rem;
+  line-height: 1.3;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 0.6rem;
+  line-height: 1.4;
+}
+
+.prose h3 {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.prose p {
+  margin: 1rem 0;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.prose li {
+  margin: 0.4rem 0;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--text-link);
+  padding: 0.3rem 1rem;
+  margin: 1.5rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-code);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  color: var(--text-link);
+}
+
+.prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: var(--bg-code);
+  padding: 1.2rem 1.5rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+.prose img {
+  border-radius: 6px;
+}
